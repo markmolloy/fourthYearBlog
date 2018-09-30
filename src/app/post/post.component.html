@@ -1,0 +1,73 @@
+<div class="holder">
+    <div class="main">
+        <div class="post" *ngIf="post">
+            <h3 class="post-title">{{post.title}}</h3>
+            <p class="post-date muted">
+                {{post.date.seconds * 1000 | date}}
+                <span class="post-date muted" *ngIf="post.updatedAt"> (Updated on {{post.updatedAt.seconds * 1000 | date}})</span>
+            </p>
+            <mat-chip-list>Tags
+                <mat-chip disabled *ngFor="let tag of post.tagsArr">{{tag}}</mat-chip>
+            </mat-chip-list>
+            <p class="post-slug">{{post.slug}}</p>
+            <p *ngFor="let p of paras | async">{{p.para}}</p>
+            <div class="para" *ngFor="let p of paraContent; let i = index">
+                <p *ngIf="!p.startsWith('--')" [innerHTML]="p"></p>
+                <img [src]="src[i]" *ngIf="p.startsWith('--IMG')"/>
+                <hr *ngIf="p.startsWith('--HR--')">
+                <h4 *ngIf="p.startsWith('--H4--')">{{p | format}}</h4>
+            </div>
+        </div>
+        <div class="share" *ngIf="post">
+            <p>Share:</p>
+            <share-buttons [theme]="'material-light'"
+            [include]="['facebook','twitter','linkedin','reddit','whatsapp','messenger']"
+            [show]="6"
+            [showIcon]="false"
+            [showText]="true"
+            [showCount]="true"
+            [size]="-1"
+            [autoSetMeta]="false"
+            ></share-buttons>
+        </div>
+
+        <div class="post bee" *ngIf="!post">
+            <h3>Move along. Nothing to see here.</h3>
+            <img src="../../assets/lostbee.png"/>
+            <p>This post either doesn't exist or hasn't been published yet.</p>
+            <p>If you'd like to be notified of new posts, subscribe on the right of the page.</p>
+        </div>
+
+        <div class="info">
+            <h3 (click)="fil()">About</h3>
+            <img [src]="src">
+            <p>This is a blog covering aspects of Mark Molloy's project for the Prj400 module of his Software Development degree</p>
+            <mat-divider></mat-divider>
+            <h3>Subscribe</h3>
+            <p>Subscribe to be notified whenever a new post is published</p>
+            <form class="form">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="accent" (click)="subscribe()">Subscribe</button>
+            </form>
+            <mat-divider></mat-divider>
+            <h3 *ngIf="post">Share</h3>
+            <div class="share" *ngIf="post">
+                <share-buttons [theme]="'material-light'"
+                [include]="['facebook','twitter','linkedin','reddit','whatsapp','messenger']"
+                [show]="6"
+                [showIcon]="false"
+                [showText]="true"
+                [showCount]="true"
+                [size]="-1"
+                [title]="post.title"
+                [description]="post.slug"
+                ></share-buttons>
+            </div>
+        </div>
+    </div>
+</div>

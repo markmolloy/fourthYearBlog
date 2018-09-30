@@ -1,0 +1,29 @@
+.post-slug {
+    font-size: 1.4em;
+}
+
+img {
+    max-width: 100%;
+}
+
+.form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bee {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bee img {
+    width: 35%;
+    height: auto;
+    margin: 5% 0;
+}
+
+.share {
+    display: flex;
+}

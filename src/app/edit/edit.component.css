@@ -1,0 +1,16 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 4% 8%;
+}
+
+.cons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cons * {
+    margin: 5%;
+}

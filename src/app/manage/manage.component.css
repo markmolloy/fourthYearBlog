@@ -1,0 +1,13 @@
+.post {
+    grid-column: 1;
+    margin: 0;
+}
+
+.sm {
+    grid-gap: 2vw;
+}
+
+.controls {
+    grid-row: 1;
+    grid-column: 2;
+}

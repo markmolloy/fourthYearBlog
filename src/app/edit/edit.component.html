@@ -1,0 +1,63 @@
+<div class="holder">
+
+  <h2 class="muted">Edit this post</h2>
+
+  <div class="main">
+
+    <form [formGroup]="form" class="form">
+      <h3>Content</h3>
+
+        <mat-form-field>
+          <input matInput placeholder="Title" formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field class="demo-chip-list">
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let tag of tags" [removable]="true" (removed)="remove(tag)">
+              {{tag}}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Tags"
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="true"
+                    (matChipInputTokenEnd)="add($event)" />
+          </mat-chip-list>
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" placeholder="Slug" formControlName="slug"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" placeholder="Content" formControlName="content"></textarea>
+        </mat-form-field>
+
+    </form>
+
+    <div class="controls">
+
+      <h3>Controls</h3>
+
+      <div class="cons">
+        <mat-slide-toggle [(ngModel)]="published" (change)="publishChange()">Published</mat-slide-toggle>
+        <button mat-fab color="warn">
+          <mat-icon aria-label="Example icon-button with a heart icon">delete_outline</mat-icon>
+        </button>
+        <button mat-fab color="accent" (click)="removeOldParas()" *ngIf="!newPost">
+          <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+        </button>
+        <button mat-fab color="accent" (click)="saveNewPost()" *ngIf="newPost">
+          <mat-icon aria-label="Example icon-button with a heart icon">save</mat-icon>
+        </button>
+
+        <progress max="100" [value]="(uploadProgress | async)"></progress>
+        <input type="file"  (change)="upload($event)" accept=".png,.jpg">
+
+      </div>
+
+    </div>
+  
+  </div>
+
+</div>

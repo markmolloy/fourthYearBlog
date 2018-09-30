@@ -1,0 +1,71 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-toolbar {
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+}
+
+.me {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.me h1 {
+    font-size: 1.5em;
+}
+
+@media only screen and (max-width: 600px) {
+    .me h1 {
+        font-size: 1em;
+    }
+    mat-toolbar {
+        padding: 0 3%;
+    }
+}
+
+.me img {
+    height: 32px;
+}
+
+.user {
+    cursor: pointer;
+}
+
+button>mar-icon {
+    color: var(--secondary-text-color);
+}
+
+.example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+}
+
+h1.example-app-name {
+    margin-left: 8px;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+}
+
+#user-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.user-list-item,
+mat-nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+  

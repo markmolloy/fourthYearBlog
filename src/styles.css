@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+:root {
+  --primary-color-dark:   #455A64;
+  --primary-color:        #607D8B;
+  --primary-color-light:  #CFD8DC;
+  --primary-color-text:   #FFFFFF;
+  --accent-color:         #00BCD4;
+  --primary-text-color:   #212121;
+  --secondary-text-color: #757575;
+  --divider-color:        #BDBDBD; 
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  background: whitesmoke;
+}
+
+mat-card {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+}
+
+.main{
+  background: #fff;
+  margin: 0 1%;
+  padding: 1%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  display: grid;
+  grid-template-columns: 3fr 1.5fr;
+  grid-gap: 5vw;
+}
+
+.holder {
+  background-image: linear-gradient(-15deg, var(--accent-color), var(--accent-color) 60%, #fff 60%, transparent);
+  min-height: 100vh;
+  padding: 2% 1%;
+}
+
+.holder > h2 {
+  margin: 1% 8%;
+  font-weight: 500;
+}
+
+.post {
+  grid-column: 1;
+  margin: 2% 0 2% 8%;
+}
+
+.info {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  padding: 2%;
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+  .info {
+    grid-column: 1;
+  }
+  h3 {
+    font-size: 1.3em;
+  }
+}
+
+.info p {
+  line-height: 1.5em;
+}
+
+.muted {
+  color: var(--secondary-text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 300;
+  margin: 0;
+}
+
+h3 {
+  font-size: 2.2em;
+}
+
+h4 {
+  font-size: 1.3em;
+  font-weight: 500;
+   color: var(--secondary-text-color);
+}

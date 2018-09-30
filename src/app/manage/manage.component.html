@@ -1,0 +1,28 @@
+<div class="holder">
+
+    <h2 class="muted">Manage Content</h2>
+
+    <div class="main sm">
+
+        <mat-card class="post" *ngFor="let post of pos">
+            <mat-card-header>
+              <mat-card-title>{{post.title}}</mat-card-title>
+              <mat-card-subtitle>{{post.date.seconds * 1000 | date}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{post.slug}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="warn" (click)="delete(post.id)">Delete</button>
+              <button mat-raised-button color="primary" (click)="edit(post.id)">Edit</button>
+              <button mat-raised-button color="accent">Publish</button>
+            </mat-card-actions>
+          </mat-card>                                          
+
+          <div class="controls">
+            <button mat-raised-button color="primary" (click)="newPost()">New post</button>
+          </div>
+
+    </div>
+
+  </div>
