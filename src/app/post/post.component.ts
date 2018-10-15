@@ -17,6 +17,7 @@ import * as firebase from 'firebase/app';
 export class PostComponent implements OnInit, OnDestroy {
 
   private sub: any;
+  private sub2: any;
 
   private paraCollection: AngularFirestoreCollection<any>
   paras: Observable<any[]>;
@@ -36,7 +37,7 @@ export class PostComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.active.params.subscribe(params => {
       this.postDoc = this.db.doc<p>(`posts/${params['id']}`);
-      this.postDoc.valueChanges().subscribe( val => {
+      this.sub2 = this.postDoc.valueChanges().subscribe( val => {
         if (val.published) {
           this.post = val;
           this.post.tagsArr = Object.keys(val.tags);
@@ -121,6 +122,7 @@ export class PostComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    this.sub2.unsubscribe();
   }
 
 }

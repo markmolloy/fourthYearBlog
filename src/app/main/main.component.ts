@@ -7,6 +7,7 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material';
 
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -26,12 +27,13 @@ export class MainComponent implements OnInit, OnDestroy {
   matcher = new MyErrorStateMatcher();
 
   constructor(public router: Router, private db: AngularFirestore, public snackBar: MatSnackBar) { 
-    this.postsCollection = db.collection<p>('posts', ref => ref.where('published', '==', true));
+    this.postsCollection = db.collection<p>('posts', ref => ref.where('published', '==', true).orderBy('date'));
     this.sub = this.postsCollection.valueChanges().subscribe( val => {
       val.forEach(x => {
         x.tagsArr = Object.keys(x.tags);
         x.link = 'posts:' + x.id;
         this.pos.push(x)
+        console.log(x);
       })
     })
   }
@@ -63,10 +65,11 @@ export class MainComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  nav() {
+    this.sub.unsubscribe();
+  }
+
   log() {
-    this.posts.forEach(p => {
-      console.log(p);
-    })
   }
 }
 

@@ -43,18 +43,6 @@
             <img [src]="src">
             <p>This is a blog covering aspects of Mark Molloy's project for the Prj400 module of his Software Development degree</p>
             <mat-divider></mat-divider>
-            <h3>Subscribe</h3>
-            <p>Subscribe to be notified whenever a new post is published</p>
-            <form class="form">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
-                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-                <button mat-raised-button color="accent" (click)="subscribe()">Subscribe</button>
-            </form>
-            <mat-divider></mat-divider>
             <h3 *ngIf="post">Share</h3>
             <div class="share" *ngIf="post">
                 <share-buttons [theme]="'material-light'"

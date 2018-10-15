@@ -9,6 +9,7 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
 
 // pipes
 import { FormatPipe } from './format.pipe';
+import { ReversePipe } from './reverse.pipe';
 
 // environment
 import { environment } from '../environments/environment';
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     PostComponent,
     ManageComponent,
     EditComponent,
-    FormatPipe
+    FormatPipe,
+    ReversePipe
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
